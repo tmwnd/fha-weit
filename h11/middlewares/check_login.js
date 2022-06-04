@@ -1,3 +1,6 @@
+// Falls Sie das übergebene Passwort in der vorherigen Aufgabe im Klartext gespeichert haben (WTF), ändern Sie dies.
+// Wir wollen in der Datenbank nur einwegverschlüsselte Passwörter speichern.
+// Nutzen Sie hierfür das Modul bcrypt.js.
 const bcrypt = require('bcrypt')
 const request = require('request')
 
@@ -7,6 +10,7 @@ function cancel(res, err = '') {
     res.render('./../views/login.html', { 'err': err })
 }
 
+// Es soll eine Route /check_login (HTTP-Methode: POST) in der Datei users.js implementiert werden, die mit Hilfe der Datenbank überprüft, ob der eingegebene Name und das Passwort valide sind. 
 module.exports = express.Router()
     .post('/', (req, res, next) => {
         if (req.body.user == '')

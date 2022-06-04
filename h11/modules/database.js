@@ -1,3 +1,17 @@
+// Wir wollen nun eine Webanwendung mit Login- und Registrier-Funktionalität unter Hinzunahme einer Datenbank implementieren.
+// Wir benutzen für das Praktikum eine SQLite-Datenbank (Achtung! Nicht beliebig skalierbar!). -> Wie auf offiziellen Wegen besprochen, hier via mariaDB
+
+// Legen Sie eine Datenbank [...] und eine Tabelle users an
+// Dort sollen alle Informationen aus dem Formular (Benutzername, Passwort und Note als Zahl) gespeichert werden.
+// Verwenden Sie id als primary key (PK) mit auto increment (AI). Der Benutzername soll unique (U) sein. Legen Sie in der Tabelle drei Testdatensätze an.
+
+/*
+    Author: Tim Wende
+    Version: 1.0
+
+    Singleton sql database API.
+*/
+
 const fs = require('fs');
 const mysql = require('mysql');
 
@@ -10,6 +24,7 @@ class db {
         if (this.db != null)
             return;
 
+        // Eine Verbindung mit der Datenbank aufbauen
         Promise.resolve()
             .then(this.init())
             .then(this.connect())
@@ -29,6 +44,7 @@ class db {
 
     connect() { this.sql.connect() }
 
+    // Ein SELECT-Statement mit Platzhaltern vorbereiten
     query(qry, val = [], callback = console.log) {
         this.resolve()
             .then(sql => sql.query(qry, val, (err, result) => callback(new Promise((resolve, reject) => {
@@ -45,6 +61,7 @@ class db {
             }))))
     }
 
+    // Ein Insert-Statement mit Platzhaltern vorbereiten
     nonquery(qry, val = [], callback = console.log) {
         this.resolve()
             .then(sql => sql.query(qry, val, err => callback(new Promise((resolve, reject) => {

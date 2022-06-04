@@ -8,6 +8,9 @@ const express = require('express')
 // bcrypt.hash('wirliebenayaka', 8).then(pwd => console.log(pwd))           // juwupp $2b$08$Rup1qiFWCd9Mc2/D5o.Xt.8oobUEH06sENm0sRvdtyL85Ycw9ABuu
 
 module.exports = express.Router()
+    // Ein SELECT-Statement mit Platzhaltern vorbereiten
+    // Die Platzhalter mit den übertragenen Werten aus req.body (dafür muss beim Abschicken des HTML-Formulars die Methode POST gewählt sein) füllen
+    // Das SELECT-Statement ausführen und auf eine Variable [...] speichern
     .post('/user', (req, res) => db.nonquery('INSERT INTO users VALUES (?, ?, ?)', [req.body.username, req.body.password, req.body.note], result => result
         .then(() => {
             res.type('plain/text')

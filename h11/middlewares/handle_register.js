@@ -3,6 +3,8 @@ const request = require('request')
 
 const express = require('express')
 
+// Anstatt eine etwaige Fehlermeldung (z.B. "keine Note zwischen 1 und 6" oder "Username oder Passwort fehlt!") in der Konsole auszugeben, soll die Fehlermeldung stattdessen im Browser auf der Registrier-Seite angezeigt werden.
+// Dafür benutzen wir wieder Templates.
 function cancel(res, err = '') {
     res.render('./../views/register.html', { 'err': err })
 }
@@ -20,6 +22,7 @@ module.exports = express.Router()
         if (isNaN(note))
             return cancel(res, 'grade NaN or note entered')
 
+        // Stellen Sie sicher, dass die übergebene Note eine Zahl zwischen 1 und 6 ist [...]
         if (note > 6 || note < 1 || ![0, 3, 7].includes(Math.round((note % 1) * 10)))
             return cancel(res, `${note} invalid grade`)
 
