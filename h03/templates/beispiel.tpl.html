@@ -1,0 +1,23 @@
+<!-- Legen Sie in Ihrer Verzeichnisstruktur einen Ordner templates an und legen Sie dort folgendes Template mit dem Dateinamen beispiel.tpl.html ab: -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{title}}</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <ul>
+        <li>E-Mail: {{mail}}</li>
+        <li>Passwort: {{password}}</li>
+        <li>Status: {{status}}</li>
+    </ul>
+
+    <!-- Fügen Sie im Template beispiel.tpl.html eine Möglichkeit hinzu, Cookie-Daten mittels Template-Engine als Paragraphen (<p>) auszugeben.  -->
+    <p>
+        Zuletzt besucht: {{lastVisit}}
+    </p>
+</body>
+
+</html>

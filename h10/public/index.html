@@ -1,0 +1,46 @@
+<!-- Erstellen Sie für das Frontend der Todo-Liste den HTML- [...] (Ordner public) -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos</title>
+
+    <link rel="stylesheet" href="stylesheets/index.css">
+
+    <!-- um es anschließend in der index.html über den Pfad "./scripts/mustache/mustache.js" und einbinden zu können. -->
+    <!-- Es soll in dem Pfad sein, existiert aber nicht lokal, aber doch beim Aufrufenden aber doch nicht /(u.u)\ -->
+    <script src="./javascripts/mustache/mustache.js"></script>
+    <!-- und binden Sie diese in Ihrer index.html ein (innerhalb der index.html nach Mustache, da dies in der todos.js verwendet wird) -->
+    <script src="./javascripts/todos.js"></script>
+</head>
+
+<body>
+    <h1>Beispiel Frontend</h1>
+
+    <hr>
+
+    <!-- Da wir hier eine Single-Page-Application entwickeln wollen, soll keine HTML-Form (<form>) verwendet werden. -->
+    <div class="inline">
+        <!-- Stattdessen können Sie ein einfaches Input-Field [...] -->
+        <label for="input_todo">Neuer Eintrag:</label>
+        <input type="text" name="todo" id="input_todo" placeholder="Todo">
+    </div>
+
+    <div class="inline">
+        <!-- [...] und einen Button verwenden. -->
+        <button type="submit" id="submit">Erstellen</button>
+    </div>
+
+    <h2>TODOs</h2>
+
+    <div id="dynamic_todos"></div>
+
+    <button id="del_done" class="link">Erledigte entfernen</button>
+
+    <button id="reset" class="link">Reset</button>
+</body>
+
+</html>

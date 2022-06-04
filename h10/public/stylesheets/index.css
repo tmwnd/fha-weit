@@ -1,0 +1,46 @@
+/* Erstellen Sie für das Frontend der Todo-Liste [...] CSS-Code (Ordner public) und machen Sie sich klar, wie die Seite später aussehen soll. */
+html {
+    background-image: url(bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+}
+
+body {
+    background-color: rgba(255, 225, 255, 0.5);
+    margin: 0 20%;
+    padding: 50px;
+    min-height: 100%;
+    text-align: left;
+}
+
+.inline {
+    display: inline;
+}
+
+.del {
+    height: 16px;
+}
+
+button.del {
+    border: none;
+    background: none;
+}
+
+/* Ich hasse css */
+/* image.del {
+    background-image: url('https://img.icons8.com/material-outlined/344/waste.png');
+} */
+
+.link {
+    background: none !important;
+    border: none;
+    padding: 0 !important;
+    /*optional*/
+    font-family: arial, sans-serif;
+    /*input has OS specific font-family*/
+    color: #069;
+    text-decoration: underline;
+    cursor: pointer;
+}

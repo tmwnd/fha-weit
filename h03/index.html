@@ -1,0 +1,50 @@
+<!-- Speichern Sie folgende index.html-Seite in dem für diese Aufgabe angelegten Projekt-Verzeichnis: -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formular</title>
+</head>
+
+<body>
+    <h1>Register new user</h1>
+
+    <!--
+        1.
+        Setzen Sie die Attribute des Formulars auf method="get" und action="".
+        Was passiert? -> Man findet die Parameter in der URL im Browser
+        Ändern Sie anschließend das Attribut method auf den Wert post und senden Sie das Formular erneut ab. -> Ok
+        Nutzen Sie die Entwicklertools Ihres Browsers um nachzuvollziehen was passiert. -> Ok
+        Die Entwicklertools können Sie in den meisten Browsern über die F12-Taste öffnen. -> Ok
+        Vergleichen Sie die POST und GET-Anfragen. -> Post: params, GET: URL
+    -->
+
+    <!-- 2. Sorgen Sie über den action-Parameter der Form dafür, das das Skript processInputs.php beim Abschicken des Formulars aufgrufen wird -->
+    <!-- 3. Setzen Sie dazu in Ihrem Frontend die Übertragung des Formulars auf POST fest -->
+    <form action="processInputs.php" method="post">
+        <fieldset>
+            <p>
+                <label>E-Mail:</label>
+                <input type="text" name="mail" id="mail">
+                <!-- <input type="email" name="mail" id="mail"> -->
+            </p>
+            <p>
+                <label>Password:</label>
+                <input type="password" name="password" id="password">
+            </p>
+            <p>
+                <label>Status:</label>
+                <!-- Testen Sie, indem Sie beispielsweise Script-Tags beim Status eingeben. Wenn Sie sich den Seitenquelltext der Ausgabe von processInputs.php anschauen, sollten Sie sehen, ob das Filtern geklappt hat. -->
+                <input type="text" name="status" id="status">
+            </p>
+            <p>
+                <button type="submit">Submit</button>
+            </p>
+        </fieldset>
+    </form>
+</body>
+
+</html>

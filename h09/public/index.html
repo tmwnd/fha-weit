@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Registrierung</title>
+    <meta charset="UTF-8">
+    <!-- [...] binden sie im Kopf der bestehenden index.html ein -->
+    <script src="./javascripts/register_frontend.js"></script>
+</head>
+
+<body>
+    <!-- Cannot POST /h09/register :( -->
+    <form method="POST" action="register">
+        <div>
+            <label for="inputName">Benutzername:</label>
+            <input type="text" name="user" id="inputName" placeholder="Name">
+        </div>
+
+        <div>
+            <label for="inputPasswort">Passwort:</label>
+            <input type="password" name="pw" id="inputPasswort" placeholder="Passwort">
+        </div>
+
+        <div>
+            <label for="inputNote">Note:</label>
+            <input type="number" name="note" id="inputNote" placeholder="Note">
+        </div>
+
+        <div>
+            <button type="submit" id="submit">Registrieren</button>
+        </div>
+    </form>
+
+    <!-- Erstellen Sie einen >>>zweiten Button<<< mit dem Attribut type="button" -->
+    <button type="button" id="button">zweiten Button</button>
+
+    <!-- Erstellen Sie in der index.html unterhalb des Registrier-Formulars ein div-Element mit dem Attribut id="output" -->
+    <div id="output"></div>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+<!-- Für die einzelnen List-Items könnten Sie ein Template benutzen.
+Dieses Template sollten Sie im Verzeichnis public/templates speichern, da das Template im Frontend gerendert werden soll. -->
+<div id="{{id}}">
+    <div>
+        <!-- Beispielsweise kann eine Checkbox benutzt werden um ein ToDo als erledigt darzustellen -->
+        <input id="input_{{id}}" type="checkbox">
+        <label for="input_{{id}}">{{title}}</label>
+
+        <button id="button_{{id}}" class="del" alt="löschen">
+            <img class="del" src="https://img.icons8.com/material-outlined/344/waste.png">
+        </button>
+    </div>
+</div>

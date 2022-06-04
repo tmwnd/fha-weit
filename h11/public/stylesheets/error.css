@@ -1,0 +1,13 @@
+.error {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    padding-top: 0px;
+}
+
+div>div.error {
+    background-color: yellow;
+    width: 100%;
+    padding-bottom: 0px;
+    text-align: center;
+}

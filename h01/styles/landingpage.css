@@ -1,0 +1,50 @@
+html {
+    /* Ein Hintergrundbild */
+    background-image: url(bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* Dieses Bild soll zentriert sein */
+    background-position: center;
+
+    /* und über die komplette Höhe gerendert werden. */
+    height: 100%;
+
+    cursor: url(pokeball.png), pointer;
+}
+
+body {
+    /* Der Hintergrund soll weiß aber halb durchscheinend sein */
+    background-color: rgba(255, 225, 255, 0.5);
+
+    /* Rechts und links soll ein Rand von 20% entstehen */
+    margin: 0 20%;
+
+    /* Der Text innerhalb soll 50px Abstand zum Rand haben */
+    padding: 50px;
+
+    /* Er soll 100% der Höhe abdecken */
+    min-height: 100%;
+
+    text-align: center;
+}
+
+/* Die Liste mit Standorten soll angepasst werden.
+Verwenden Sie dazu eine ID um nicht grundsätzlich alle Listen zu verändern. */
+ul#list li {
+    /* Entfernen Sie die Aufzählungspunkte */
+    list-style-type: none;
+
+    /* Stellen Sie die einzelnen Listenelemente horizontal da */
+    display: inline-block;
+
+    /* Sorgen Sie für ausreichend Abstand zwischen den Listenelementen */
+    margin: 0 10px;
+}
+
+/* Gestalten Sie die Seite nun nach Ihren eigenen Vorlieben. */
+img {
+    transition: transform 50s linear;
+}
+img:hover {
+    transform: rotate(3600deg);
+}
