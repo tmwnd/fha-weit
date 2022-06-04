@@ -12,9 +12,9 @@ const express = require('express')
 // Definieren Sie nun in Ihrer users.js eine zweite Route (z.B. /register), um die Daten entegegenzunehmen, den Benutzer in der Datenbank zu speichern und anschließend eine Bestätigung auszugeben.
 module.exports = express.Router()
     .get('/', (req, res) => res.redirect('https://weit.tmwnd.de/h11/login'))
-    .get('/login', (req, res) => res.render('./../views/login.html', {}))
+    .get('/login', (req, res) => res.render('login.html', {}))
     // Definieren Sie in der users.js die GET-Route /register zum Ausliefern des Registrier-Templates und denken Sie daran entsprechend den Link in Ihrer login.html auf die Route (/users/register) anzupassen.
-    .get('/register', (req, res) => res.render('./../views/register.html', {}))
+    .get('/register', (req, res) => res.render('register.html', {}))
     // Schaffen Sie nun eine Möglichkeit, um einen Benutzer in die Datenbank einzupflegen.
     .post('/register', (req, res) => res.redirect(307, req.baseUrl + '/user'))
     // Rückgabe verarbeiten
@@ -26,7 +26,7 @@ module.exports = express.Router()
         resolve((JSON.parse(body)))
     })
         .then(users => users[0])
-        .then(user => res.render('./../views/user.html', { 'user': user.username, 'note': user.note }))
+        .then(user => res.render('user.html', { 'user': user.username, 'note': user.note }))
         .catch(err => res.status(500).send('ERR'))
     ))
     .get('/admin', (req, res) => request.post('https://weit.tmwnd.de/h11/api/admin', (html_err, html_res, body) => new Promise((resolve, reject) => {
@@ -36,7 +36,7 @@ module.exports = express.Router()
         resolve((JSON.parse(body)))
     })
         .then(users => {
-            let tpl = fs.readFileSync(__dirname + '/../views/single_user.html').toString()
+            let tpl = fs.readFileSync(__dirname + 'single_user.html').toString()
             let table = ''
             users.forEach(user => table += Mustache.render(tpl, { 'user': user.username, 'note': user.note }) + '\n')
             res.render('./../views/admin.html', { 'table': table })

@@ -6,7 +6,7 @@ const express = require('express')
 // Anstatt eine etwaige Fehlermeldung (z.B. "keine Note zwischen 1 und 6" oder "Username oder Passwort fehlt!") in der Konsole auszugeben, soll die Fehlermeldung stattdessen im Browser auf der Registrier-Seite angezeigt werden.
 // Dafür benutzen wir wieder Templates.
 function cancel(res, err = '') {
-    res.render('./../views/register.html', { 'err': err })
+    res.render('register.html', { 'err': err })
 }
 
 module.exports = express.Router()

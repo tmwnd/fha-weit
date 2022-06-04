@@ -7,7 +7,7 @@ const request = require('request')
 const express = require('express')
 
 function cancel(res, err = '') {
-    res.render('./../views/login.html', { 'err': err })
+    res.render('login.html', { 'err': err })
 }
 
 // Es soll eine Route /check_login (HTTP-Methode: POST) in der Datei users.js implementiert werden, die mit Hilfe der Datenbank überprüft, ob der eingegebene Name und das Passwort valide sind. 
