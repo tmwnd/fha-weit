@@ -42,7 +42,10 @@ module.exports = express.Router()
                                 reject(body)
                             resolve()
                         })
-                            .then(next)
+                            .then(() => {
+                                req.session.user = req.body.user
+                                next()
+                            })
                             .catch(err => cancel(res, err))
                         )
                         break

@@ -11,16 +11,31 @@
 </head>
 
 <body>
+    <div>
+        {{user}} sei mir gegrüßt, hier in Frankfurt am Main im Herzen von Europa in meinem wunderbaren kleinen Lädchen, an einem fantastischen Tag. Und schau mal, was ich dir mitgebracht habe:
+    </div>
+
+    <br>
+
     <table>
         <tr>
             <th>username</th>
             <th>note</th>
+            <th>note_str</th>
         </tr>
         <tr>
             <td>{{user}}</td>
             <td>{{note}}</td>
+            <td>{{note_str}}</td>
         </tr>
     </table>
+
+    <br>
+
+    <!-- und verlinken Sie diese in der info_tpl.html. -->
+    <div>
+        <a href="https://weit.tmwnd.de/h11/logout">logout</a>
+    </div>
 </body>
 
 </html>

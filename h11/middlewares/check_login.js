@@ -31,7 +31,10 @@ module.exports = express.Router()
                     throw 'pw dont match'
                 }
             })
-            .then(next)
+            .then(() => {
+                req.session.user = req.body.user
+                next()
+            })
             .catch(err => {
                 switch (err) {
                     case 'pw dont match':
