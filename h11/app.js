@@ -15,7 +15,7 @@ app.use(session({ secret: 'weit', cookie: { maxAge: 60000 }}))
 
 const consolidate = require('consolidate')
 app.engine('html', consolidate.mustache)
-app.set('views', __dirname + '/views');
+app.set('views', __dirname + '/views')
 
 // Um in Ihrer Route /check_login Formulardaten aus dem Body auslesen zu können, müssen Sie die Middleware-Funktion urlencoded benutzen
 app.use(bodyParser.json())
