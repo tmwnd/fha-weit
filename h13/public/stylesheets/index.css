@@ -1,0 +1,21 @@
+.inline {
+    display: inline
+}
+
+.gamemode {
+    margin-right: 0.125em;
+    height: 5vh;
+    min-width: 10vh;
+    max-width: 15vh;
+    float: left;
+}
+
+.block {
+    margin-top: 0.25em;
+    margin-bottom: 5em;
+}
+
+P {
+    margin-bottom: 0.5em;
+    text-align: center
+}
