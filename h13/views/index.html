@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Stein-Schere-Papier</title>
+    <link rel="stylesheet" href="/h13/stylesheets/index.css">
+
+    <script src="/h13/javascripts/index.js"></script>
+</head>
+
+<body>
+    <p>start new game</p>
+
+    <form method="post" action="/h13/game">
+        <div id="player">
+            <input type="text" name="name" id="name" required>
+            <button type="submit" id="btn_submit">submit</button>
+        </div>
+
+        <div id="gamemodes">{{{gamemodes}}}</div>
+
+        <p>or join a friend</p>
+
+        <div id="players" class="grid">{{{players}}}</div>
+    </form>
+</body>
+
+</html>

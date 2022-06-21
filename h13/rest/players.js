@@ -17,7 +17,8 @@ module.exports = express.Router()
         if (players[id].available == undefined)
             players[id].available = true
 
-        res.send({ 'id': id })
+        res.type('plain/text')
+        res.send(`${id}`)
 
         id++
     })

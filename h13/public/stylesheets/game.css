@@ -1,0 +1,201 @@
+body {
+    background: url('./../images/hearthstone.jpg') no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 63.25vw;
+    margin: 0;
+}
+
+.grid {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template-rows:
+        9.75% 13.5% 5% 15% 5% 15% 4.75% 13.5% 5%;
+    grid-template-areas:
+        'gamemode'
+        'opponent'
+        'opponent_wins'
+        'opponent_gesture'
+        'btn_select'
+        'player_gesture'
+        'empty'
+        'player'
+        'player_wins'
+    ;
+    float: left;
+}
+
+#gamemode {
+    grid-area: gamemode;
+    text-align: center;
+    color: lightgray;
+    font-weight: bold;
+}
+
+#winner {
+    grid-area: opponent_gesture;
+}
+
+#btn_select {
+    grid-area: btn_select;
+    margin-left: 81.25%;
+    width: 7%;
+}
+
+.player {
+    margin-top: auto;
+    margin-left: 45%;
+    height: 50%;
+    width: 10%;
+    text-align: center;
+    font-weight: bold;
+    color: lightgray
+}
+
+#opponent {
+    grid-area: opponent;
+}
+
+#player {
+    grid-area: player;
+}
+
+.wins {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 54.5%;
+    height: 75%;
+    width: 5%;
+    text-align: center;
+    font-weight: bold;
+}
+
+#player_wins {
+    grid-area: player_wins;
+}
+
+#opponent_wins {
+    grid-area: opponent_wins;
+}
+
+.gesture_view {
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10vw;
+}
+
+#player_gesture {
+    grid-area: player_gesture;
+}
+
+#opponent_gesture {
+    grid-area: opponent_gesture;
+}
+
+#gestures {
+    grid-area: opponent_gesture;
+    margin-left: auto;
+    margin-right: auto;
+    width: max-content;
+    max-width: 75%;
+}
+
+.gesture_container {
+    float: left;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    height: 100%;
+    width: 6vw;
+    position: relative;
+}
+
+.gesture_container label,
+.gesture_container input {
+    display: block;
+    position: absolute;
+}
+
+.gesture_container input[type="radio"] {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    z-index: 1;
+    opacity: 0%;
+}
+
+.gesture_container label {
+    height: 100%;
+    width: 100%;
+}
+
+.Schere {
+    background: url('./../images/gestures/schere.png') no-repeat center;
+    background-size: contain;
+}
+
+.Stein {
+    background: url('./../images/gestures/stein.png') no-repeat center;
+    background-size: contain;
+}
+
+.Papier {
+    background: url('./../images/gestures/papier.png') no-repeat center;
+    background-size: contain;
+}
+
+.Brunnen {
+    background: url('./../images/gestures/brunnen.png') no-repeat center;
+    background-size: contain;
+}
+
+.Streichholz {
+    background: url('./../images/gestures/streichholz.png') no-repeat center;
+    background-size: contain;
+}
+
+.Echse {
+    background: url('./../images/gestures/echse.png') no-repeat center;
+    background-size: contain;
+}
+
+.Spock {
+    background: url('./../images/gestures/spock.png') no-repeat center;
+    background-size: contain;
+}
+
+input[type="radio"]:checked+label.Schere {
+    background: url('./../images/gestures/schere_shiny.png') no-repeat center;
+    background-size: contain;
+}
+
+input[type="radio"]:checked+label.Stein {
+    background: url('./../images/gestures/stein_shiny.png') no-repeat center;
+    background-size: contain;
+}
+
+input[type="radio"]:checked+label.Papier {
+    background: url('./../images/gestures/papier_shiny.png') no-repeat center;
+    background-size: contain;
+}
+
+input[type="radio"]:checked+label.Brunnen {
+    background: url('./../images/gestures/brunnen_shiny.png') no-repeat center;
+    background-size: contain;
+}
+
+input[type="radio"]:checked+label.Streichholz {
+    background: url('./../images/gestures/streichholz_shiny.png') no-repeat center;
+    background-size: contain;
+}
+
+input[type="radio"]:checked+label.Echse {
+    background: url('./../images/gestures/echse_shiny.png') no-repeat center;
+    background-size: contain;
+}
+
+input[type="radio"]:checked+label.Spock {
+    background: url('./../images/gestures/spock_shiny.png') no-repeat center;
+    background-size: contain;
+}

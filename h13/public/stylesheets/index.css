@@ -1,18 +1,18 @@
-.inline {
-    display: inline
-}
-
-.gamemode {
-    margin-right: 0.125em;
-    height: 5vh;
-    min-width: 10vh;
-    max-width: 15vh;
-    float: left;
-}
-
-.block {
+#gamemodes {
     margin-top: 0.25em;
-    margin-bottom: 5em;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.grid-header {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+    text-align: center;
 }
 
 P {

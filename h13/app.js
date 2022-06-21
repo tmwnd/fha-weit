@@ -15,11 +15,14 @@ app.use('/h13/javascripts/mustache', express.static(path.join(__dirname, 'node_m
 
 app.use('/h13/api', require('./middlewares/api.js'))
 
+app.use('/h13', require('./routes/index.js'))
+app.use('/h13/game', require('./routes/game.js'))
 app.use('/h13', express.static(path.join(__dirname, 'websockets')))
 app.use('/h13', express.static(path.join(__dirname, 'public')))
-app.use('/h13/game', require('./routes/game.js'))
 
 app.use('/h13/api', require('./rest/players.js'))
+app.use('/h13/api', require('./rest/winner.js'))
+app.use('/h13/api', require('./rest/random.js'))
 
 const server = app.listen(3013)
 

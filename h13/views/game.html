@@ -5,16 +5,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Game</title>
+    <link rel="stylesheet" href="/h13/stylesheets/game.css">
 
     <script src="/h13/javascripts/game.js"></script>
 </head>
 
 <body>
-    <div id="player">{{name}}</div>
-    <div id="opponent">{{opponent}}</div>
+    <div class="grid">
+        <div id="gamemode">{{gamemode}}</div>
 
-    <div id="select_btns"></div>
+        <div id="winner"></div>
+
+        <div id="opponent" class="player">{{opponent}}</div>
+        <div id="opponent_wins" class="wins">0</div>
+        <div id="opponent_gesture" class="gesture_view"></div>
+
+        <div id="gestures">{{{gestures}}}</div>
+        <button id="btn_select" disabled>select</button>
+
+        <div id="player_gesture" class="gesture_view"></div>
+        <div id="player" class="player">{{name}}</div>
+        <div id="player_wins" class="wins">0</div>
+    </div>
 </body>
 
 </html>
