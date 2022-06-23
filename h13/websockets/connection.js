@@ -56,13 +56,22 @@ module.exports = (socket, req) => {
                     player.oppenent.socket.send(`WINNER ${-1 + logic[oppenent_gesture].includes(gesture) + 2 * logic[gesture].includes(oppenent_gesture)}`)
                 }
             }
+        } else if (message.startsWith('RESTART')) {
+            let player = players[message.replace('RESTART ', '')]
+
+            if (player.socket == socket) {
+                delete player.gesture
+                delete player.oppenent.gesture
+
+                player.oppenent.socket.send('RESTART ')
+            }
         } else {
             console.log(message)
         }
     })
 
     socket.on('close', () => {
-        //TODO redirect
+        //TODO delete player
         console.log('guna')
     })
 }

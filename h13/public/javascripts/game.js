@@ -2,7 +2,30 @@ let API_ROUTE_URL = '/h13/api/'
 
 let socket
 
+function restart() {
+    let btn_select = document.getElementById('btn_select')
+    btn_select.disabled = true
+
+    player_gesture.textContent = ''
+    Array.from(player_gesture.classList).forEach(gesture => player_gesture.classList.remove(gesture))
+    Array.from(opponent_gesture.classList).forEach(gesture => opponent_gesture.classList.remove(gesture))
+
+    Array
+        .from(document.getElementById('gestures').children)
+        .forEach(gesture => {
+            gesture = Array.from(gesture.getElementsByClassName('gesture'))[0]
+            gesture.checked = false
+            gesture.disabled = false
+        })
+
+    document.getElementById('gestures').classList.remove('hidden')
+
+    btn_select.textContent = 'select'
+}
+
 function set_winner(winner) {
+    let name = document.getElementById('player').textContent
+
     switch (winner) {
         case '-1':
             winner = 'draw'
@@ -10,14 +33,20 @@ function set_winner(winner) {
         case '0':
             winner = document.getElementById('player').textContent
             document.getElementById('player_wins').textContent = parseInt(document.getElementById('player_wins').textContent) + 1
+            document.getElementById('player_gesture').classList.add('winner')
             break
         case '1':
             winner = document.getElementById('opponent').textContent
             document.getElementById('opponent_wins').textContent = parseInt(document.getElementById('opponent_wins').textContent) + 1
+            document.getElementById('opponent_gesture').classList.add('winner')
             break
     }
 
-    document.getElementById('winner').textContent = winner
+    setTimeout(() => {
+        let btn_select = document.getElementById('btn_select')
+        btn_select.textContent = 'restart'
+        btn_select.disabled = false
+    }, 1500)
 }
 
 function add_socket() {
@@ -44,64 +73,106 @@ function add_socket() {
     socket.onmessage = (message) => {
         message = message.data
 
-        if (message.startsWith('OPPONENT '))
+        if (message.startsWith('OPPONENT ')) {
             document.getElementById('opponent').textContent = message.replace('OPPONENT ', '')
-        else if (message.startsWith('OPPONENT_GESTURE '))
-            document.getElementById('opponent_gesture').textContent = message.replace('OPPONENT_GESTURE', '')
+
+            Array
+                .from(document.getElementById('gestures').children)
+                .forEach(gesture => Array.from(gesture.getElementsByClassName('gesture'))[0].disabled = false)
+        }
+        else if (message.startsWith('OPPONENT_GESTURE ')) {
+            document.getElementById('gestures').classList.add('hidden')
+
+            let opponent_gesture = document.getElementById('opponent_gesture')
+            opponent_gesture.textContent = message.replace('OPPONENT_GESTURE ', '')
+            opponent_gesture.classList.add(message.replace('OPPONENT_GESTURE ', ''))
+        }
         else if (message.startsWith('WINNER '))
             set_winner(message.replace('WINNER ', ''))
+        else if (message.startsWith('RESTART '))
+            restart()
         else
             console.log(message)
     }
 }
 
 function set_radio_listener() {
+    let oppenent = document.getElementById('opponent').textContent
     Array
         .from(document.getElementsByClassName('gesture'))
-        .forEach(gesture => gesture.addEventListener('click', event => {
-            document.getElementById('btn_select').disabled = false
-        }))
+        .forEach(gesture => {
+            if (!socket || oppenent != '')
+                gesture.disabled = false
+
+            gesture.addEventListener('click', event => {
+                document.getElementById('btn_select').disabled = false
+            })
+        })
 }
 
 function set_select_listener() {
     document.getElementById('btn_select').addEventListener('click', async event => {
-        let gesture = Array
-            .from(document.getElementById('gestures').children)
-            .filter(gesture => Array.from(gesture.getElementsByClassName('gesture'))[0].checked)[0]
+        let player_gesture = document.getElementById('player_gesture')
+        let opponent_gesture = document.getElementById('opponent_gesture')
 
-        let name = document.getElementById('player').textContent
-        let gamemode = document.getElementById('gamemode').textContent
+        switch (event.target.textContent) {
+            case 'select':
+                event.target.disabled = true
 
-        gesture = Array
-            .from(gesture.getElementsByClassName('name'))[0]
-            .textContent
+                Array
+                    .from(document.getElementById('gestures').children)
+                    .forEach(gesture => Array.from(gesture.getElementsByClassName('gesture'))[0].disabled = true)
 
-        document.getElementById('player_gesture').textContent = gesture
+                let gesture = Array
+                    .from(document.getElementById('gestures').children)
+                    .filter(gesture => Array.from(gesture.getElementsByClassName('gesture'))[0].checked)[0]
 
-        if (socket)
-            socket.send(`SELECT ${name} | ${gesture}`)
-        else {
-            let bot_gesture = await fetch(API_ROUTE_URL + 'random', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ 'gamemode': gamemode })
-            })
-                .then(response => response.text())
+                let name = document.getElementById('player').textContent
+                let gamemode = document.getElementById('gamemode').textContent
 
-            document.getElementById('opponent_gesture').textContent = bot_gesture
+                gesture = Array
+                    .from(gesture.getElementsByClassName('name'))[0]
+                    .textContent
 
-            let winner = await fetch(API_ROUTE_URL + 'winner', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    'gamemode': gamemode,
-                    'gesture1': gesture,
-                    'gesture2': bot_gesture
-                })
-            })
-                .then(response => response.text())
+                player_gesture.textContent = gesture
+                player_gesture.classList.add(gesture)
 
-            set_winner(winner)
+                if (socket)
+                    socket.send(`SELECT ${name} | ${gesture}`)
+                else {
+                    document.getElementById('gestures').classList.add('hidden')
+
+                    let bot_gesture = await fetch(API_ROUTE_URL + 'random', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ 'gamemode': gamemode })
+                    })
+                        .then(response => response.text())
+
+                    opponent_gesture.textContent = bot_gesture
+                    opponent_gesture.classList.add(bot_gesture)
+
+                    let winner = await fetch(API_ROUTE_URL + 'winner', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            'gamemode': gamemode,
+                            'gesture1': gesture,
+                            'gesture2': bot_gesture
+                        })
+                    })
+                        .then(response => response.text())
+
+                    set_winner(winner)
+                }
+                break
+            case 'restart':
+                restart()
+
+                if (socket)
+                    socket.send(`RESTART ${document.getElementById('player').textContent}`)
+
+                break;
         }
     })
 }

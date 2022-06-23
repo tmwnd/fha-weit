@@ -6,6 +6,10 @@ body {
     margin: 0;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 .grid {
     display: grid;
     height: 100%;
@@ -29,12 +33,9 @@ body {
 #gamemode {
     grid-area: gamemode;
     text-align: center;
+    font-size: 2.5vw;
     color: lightgray;
     font-weight: bold;
-}
-
-#winner {
-    grid-area: opponent_gesture;
 }
 
 #btn_select {
@@ -49,6 +50,7 @@ body {
     height: 50%;
     width: 10%;
     text-align: center;
+    font-size: 2vw;
     font-weight: bold;
     color: lightgray
 }
@@ -68,6 +70,7 @@ body {
     height: 75%;
     width: 5%;
     text-align: center;
+    font-size: 2.5vw;
     font-weight: bold;
 }
 
@@ -84,6 +87,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     width: 10vw;
+    font-size: 0;
 }
 
 #player_gesture {
@@ -115,6 +119,7 @@ body {
 .gesture_container input {
     display: block;
     position: absolute;
+    font-size: 0;
 }
 
 .gesture_container input[type="radio"] {
@@ -128,6 +133,11 @@ body {
 .gesture_container label {
     height: 100%;
     width: 100%;
+}
+
+.winner,
+input[type="radio"]:hover+label {
+    transform: scale(1.5);
 }
 
 .Schere {
@@ -197,5 +207,40 @@ input[type="radio"]:checked+label.Echse {
 
 input[type="radio"]:checked+label.Spock {
     background: url('./../images/gestures/spock_shiny.png') no-repeat center;
+    background-size: contain;
+}
+
+input[type="radio"]:hover+label.Schere {
+    background: url('./../images/gestures/schere_hover.png') no-repeat center;
+    background-size: contain;
+}
+
+input[type="radio"]:hover+label.Stein {
+    background: url('./../images/gestures/stein_hover.png') no-repeat center;
+    background-size: contain;
+}
+
+input[type="radio"]:hover+label.Papier {
+    background: url('./../images/gestures/papier_hover.png') no-repeat center;
+    background-size: contain;
+}
+
+input[type="radio"]:hover+label.Brunnen {
+    background: url('./../images/gestures/brunnen_hover.png') no-repeat center;
+    background-size: contain;
+}
+
+input[type="radio"]:hover+label.Streichholz {
+    background: url('./../images/gestures/streichholz_hover.png') no-repeat center;
+    background-size: contain;
+}
+
+input[type="radio"]:hover+label.Echse {
+    background: url('./../images/gestures/echse_hover.png') no-repeat center;
+    background-size: contain;
+}
+
+input[type="radio"]:hover+label.Spock {
+    background: url('./../images/gestures/spock_hover.png') no-repeat center;
     background-size: contain;
 }
